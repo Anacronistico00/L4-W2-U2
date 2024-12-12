@@ -82,9 +82,15 @@
           </p>
           <p>
             <a href="#" class="btn btn-primary my-2">Load Images</a>
-            <a href="#" class="btn btn-secondary my-2">Load Secondary Images</a>
+            <a href="#" class="btn btn-secondary">Load Secondary Images</a>
           </p>
         </div>
+        <fieldset class="container mt-3">
+          <input type="text" name="keyword" id="keywordInput" required />
+          <button type="submit" class="btn btn-secondary my-2 searchBtn">
+            SEARCH
+          </button>
+        </fieldset>
       </section>
       <div class="album py-5 bg-light">
         <div class="container">
@@ -405,8 +411,6 @@
               </div>
             </div>
           </div>
-          <div class="row" id="primaryAlbum"></div>
-          <div class="row" id="secondaryAlbum"></div>
         </div>
       </div>
     </main>

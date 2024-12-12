@@ -74,21 +74,41 @@ async function getImages(keyword) {
       btnDiv.classList.add('btn-group');
 
       const btn1 = document.createElement('button');
-      const btn2 = document.createElement('button');
 
       btn1.classList.add('btn', 'btn-sm', 'btn-outline-secondary');
       btn1.setAttribute('type', 'button');
       btn1.textContent = 'VIEW';
+      btn1.setAttribute('data-bs-toggle', 'modal');
+      btn1.setAttribute('data-bs-target', 'exampleModal');
+      const modal = document.createElement('div');
+      modal.classList.add('modal', 'fade');
+      modal.id = 'exempleModal';
+      modal.setAttribute('tabindex', '-1');
+      modal.setAttribute('aria-labelledby', 'exempleModalLabel');
+      modal.setAttribute('aria-hidden', 'true');
+      modal.innerHTML = `  <div class="modal-dialog">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                              </div>
+                              <div class="modal-body">
+                                ...
+                              </div>
+                              <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-primary">Save changes</button>
+                              </div>
+                            </div>
+                          </div>`;
+      const btn2 = document.createElement('button');
       btn2.classList.add('btn', 'btn-sm', 'btn-outline-secondary');
       btn2.setAttribute('type', 'button');
+
       btn2.textContent = 'HIDE';
 
-      btn2.addEventListener('click', function (e) {
-        e.preventDefault();
-        deleteItem();
-        function deleteItem() {
-          card.delete();
-        }
+      btn2.addEventListener('click', function () {
+        col.remove();
       });
 
       const small = document.createElement('small');
@@ -96,6 +116,7 @@ async function getImages(keyword) {
       small.textContent = `${photo.id}`;
 
       btnDiv.appendChild(btn1);
+      btnDiv.appendChild(modal);
       btnDiv.appendChild(btn2);
       footerDiv.appendChild(btnDiv);
       footerDiv.appendChild(small);
